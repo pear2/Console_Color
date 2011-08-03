@@ -28,8 +28,8 @@ Package PEAR2_CacheSystem API release notes for version 0.1.0.</notes>
  <contents>
   <dir name="/">
    <dir name="src" baseinstalldir="PEAR2">
-    <dir name="Console_Color">
-     <file role="php" name="Main.php"/>
+    <dir name="Console/">
+     <file role="php" name="Color.php"/>
     </dir>
    </dir>
   </dir>

@@ -10,7 +10,7 @@
  * @copyright 2011 Ivo Nascimento
  * @license   http://www.opensource.org/licenses/bsd-license.php New BSD License
  * @version   SVN: $Id$
- * @link      
+ * @link
  */
 
 /**
@@ -27,7 +27,7 @@ namespace PEAR2\Console\Color;
 class Color
 {
 	/**
-	 * 
+	 *
 	 * add constant values to values retrieved by specific mappers
 	 * @param string $value the value form the mappers
 	 * @return string the final value to command line
@@ -37,7 +37,7 @@ class Color
         return "\033[".$value.'m';
 	}
 	/**
-	 * 
+	 *
 	 * get the value into mappers
 	 * @param string $value the value the user insert in text
 	 * @return string
@@ -51,7 +51,7 @@ class Color
 		}
 		else if ( strtolower($diff) == $diff)
 		{
-			$returnvalue = ColorMapper::get($value);			
+			$returnvalue = ColorMapper::get($value);
 		}
 		else
 		{
@@ -64,12 +64,12 @@ class Color
 			throw New \Exception( "Value {$value} not found" );
 	}
 	/**
-	 * 
+	 *
 	 * search values into string and replace with mapped values
 	 * @param string $string
 	 * @access public
 	 * @return string
-	 */	
+	 */
 	public static function convert($string){
 		$string = self::sanitize($string);
 		$matches = self::getPatterns($string);
@@ -78,11 +78,11 @@ class Color
 				$newvalue ="";
 				if ( is_array( ($keys=self::get($key)))){
 					foreach ($keys as $ikey){
-						$newvalue .= self::decorateValue( $ikey ) ; 
+						$newvalue .= self::decorateValue( $ikey ) ;
 					}
 				}else
 		    	$newvalue = self::decorateValue(
-			    	 self::get($key)) ; 
+			    	 self::get($key)) ;
 			    $string = str_replace($key, $newvalue, $string);
 			}
 		}
