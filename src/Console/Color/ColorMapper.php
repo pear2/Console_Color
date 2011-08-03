@@ -12,6 +12,15 @@
  * @link      
  */
 namespace PEAR2\Console\Color;
+/**
+ * 
+ * this class have the possibles values to an Font Color
+ * the percent[n] constants are mappers to %[n] values
+ * @author    Ivo Nascimento <ivo@o8o.com.br>
+ * @copyright 2011 Ivo Nascimento
+ * @license   http://www.opensource.org/licenses/bsd-license.php New BSD License
+ *
+ */
 class ColorMapper extends Mapper
 {
 	const BLACK		= 30;

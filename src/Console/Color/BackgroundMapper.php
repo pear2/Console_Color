@@ -12,6 +12,16 @@
  * @link      http://svn.php.net/repository/pear2/PEAR2_Console_Color
  */
 namespace PEAR2\Console\Color;
+/**
+ * 
+ * this class have the possibles values to an Background Color
+ * the percent[n] constants are mappers to %[n] values
+ * @author    Ivo Nascimento <ivo@o8o.com.br>
+ * @copyright 2011 Ivo Nascimento
+ * @license   http://www.opensource.org/licenses/bsd-license.php New BSD License
+ *
+ */
+
 class BackgroundMapper extends Mapper
 {
 	const BLACK  	= 40;
