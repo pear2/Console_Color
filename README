@@ -1,4 +1,4 @@
-PEAR2_Console_Color is a Package to provide a easy way to print text in
-command line when its necessary.
+This Package provide a easy way to print text with color and style in command line.
+
 Have a simple interface and basicly using the static function 'convert'
 you can make use of this Object.
