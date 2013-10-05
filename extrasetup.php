@@ -1,25 +1,41 @@
 <?php
-/**
- * This file is used to provide extra files/packages outside package.xml
- * More information: http://pear.php.net/manual/en/pyrus.commands.package.php#pyrus.commands.package.extrasetup
- */
-$extrafiles = array();
 
 /**
- * for example:
-if (basename(__DIR__) == 'trunk') {
-    $extrafiles = array(
-        new \PEAR2\Pyrus\Package(__DIR__ . '/../../HTTP_Request/trunk/package.xml'),
-        new \PEAR2\Pyrus\Package(__DIR__ . '/../../sandbox/Console_CommandLine/trunk/package.xml'),
-        new \PEAR2\Pyrus\Package(__DIR__ . '/../../MultiErrors/trunk/package.xml'),
-        new \PEAR2\Pyrus\Package(__DIR__ . '/../../Exception/trunk/package.xml'),
-    );
-} else {
-    $extrafiles = array(
-        new \PEAR2\Pyrus\Package(__DIR__ . '/../HTTP_Request/package.xml'),
-        new \PEAR2\Pyrus\Package(__DIR__ . '/../sandbox/Console_CommandLine/package.xml'),
-        new \PEAR2\Pyrus\Package(__DIR__ . '/../MultiErrors/package.xml'),
-        new \PEAR2\Pyrus\Package(__DIR__ . '/../Exception/package.xml'),
-    );
+ * extrasetup.php for PEAR2_Console_Color.
+ * 
+ * PHP version 5.3
+ *
+ * @category Console
+ * @package  PEAR2_Console_Color
+ * @author   Vasil Rangelov <boen.robot@gmail.com>
+ * @license  http://www.opensource.org/licenses/bsd-license.php New BSD License
+ * @version  GIT: $Id$
+ * @link     http://pear2.php.net/PEAR2_Console_Color
+ */
+
+$extrafiles = array();
+$phpDir = Pyrus\Config::current()->php_dir;
+$packages = array('PEAR2/Autoload');
+
+$oldCwd = getcwd();
+chdir($phpDir);
+foreach ($packages as $pkg) {
+    if (is_dir($pkg)) {
+        foreach (new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator(
+                $pkg,
+                RecursiveDirectoryIterator::UNIX_PATHS
+                | RecursiveDirectoryIterator::SKIP_DOTS
+            ),
+            RecursiveIteratorIterator::LEAVES_ONLY
+        ) as $path) {
+            $extrafiles['src/' . $path->getPathname()] = $path->getRealPath();
+        }
+    }
+
+    if (is_file($pkg . '.php')) {
+        $extrafiles['src/' . $pkg . '.php']
+            = $phpDir . DIRECTORY_SEPARATOR . $pkg . '.php';
+    }
 }
-*/
+chdir($oldCwd);
