@@ -14,6 +14,8 @@
  */
 namespace PEAR2\Console\Color;
 
+use ReflectionClass;
+
 /**
  * This class has the possibles values to a Font Style.
  * 
@@ -58,6 +60,7 @@ abstract class Styles
         $validStyles = array_values(
             array_unique($flagsClass->getConstants(), SORT_NUMERIC)
         );
+        unset($validStyles[array_search(self::ALL, $validStyles, true)]);
         
         if (self::ALL === $styles) {
             return $validStyles;

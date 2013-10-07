@@ -189,7 +189,10 @@ class Color
     public function setFont($color)
     {
         if (!in_array($color, static::$validFonts, true)) {
-            throw new UnexpectedValueException('Invalid font supplied.');
+            throw new UnexpectedValueException(
+                'Invalid font supplied.',
+                UnexpectedValueException::CODE_FONT
+            );
         }
         $this->font = $color;
 
@@ -204,7 +207,7 @@ class Color
      */
     public function getBackground()
     {
-        return $this->font;
+        return $this->backgorund;
     }
 
     /**
@@ -217,7 +220,10 @@ class Color
     public function setBackground($color)
     {
         if (!in_array($color, static::$validBackgorunds, true)) {
-            throw new UnexpectedValueException('Invalid background supplied.');
+            throw new UnexpectedValueException(
+                'Invalid background supplied.',
+                UnexpectedValueException::CODE_BACKGROUND
+            );
         }
         $this->backgorund = $color;
 
@@ -277,7 +283,7 @@ class Color
         if (Styles::ALL === $style) {
             return $this->styles;
         }
-        return isset($this->style[$style]) ? $this->style[$style] : null;
+        return isset($this->styles[$style]) ? $this->styles[$style] : null;
     }
 
     /**
@@ -311,6 +317,7 @@ class Color
             foreach ($matchingStyles as $style) {
                 $this->styles[$style] = $state;
             }
+            ksort($this->styles);
         }
 
         $this->sequence = null;

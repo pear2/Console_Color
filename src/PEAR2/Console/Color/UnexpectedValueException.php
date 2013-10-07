@@ -28,4 +28,6 @@ use UnexpectedValueException as U;
  */
 class UnexpectedValueException extends U implements Exception
 {
+    const CODE_FONT       = 1;
+    const CODE_BACKGROUND = 2;
 }
