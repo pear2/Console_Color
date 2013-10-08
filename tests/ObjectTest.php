@@ -19,26 +19,21 @@ class ObjectTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->object = new Color();
-        $this->assertSame(Fonts::KEEP, $this->object->getFont());
-        $this->assertSame(Backgrounds::KEEP, $this->object->getBackground());
-        $this->assertSame(Flags::NONE, $this->object->getFlags());
-        $this->assertSame(array(), $this->object->getStyles());
-        $this->assertSame("\033[m", (string)$this->object);
     }
     
     public function setGetFontDataProvider()
     {
         return array(
-            0 => array(Fonts::BLACK, "\033[30m"),
-            1 => array(Fonts::RED, "\033[31m"),
-            2 => array(Fonts::GREEN, "\033[32m"),
-            3 => array(Fonts::BROWN, "\033[33m"),
-            4 => array(Fonts::YELLOW, "\033[33m"),
-            5 => array(Fonts::BLUE, "\033[34m"),
-            6 => array(Fonts::PURPLE, "\033[35m"),
-            7 => array(Fonts::MAGENTA, "\033[35m"),
-            8 => array(Fonts::CYAN, "\033[36m"),
-            9 => array(Fonts::GREY, "\033[37m"),
+            0  => array(Fonts::BLACK, "\033[30m"),
+            1  => array(Fonts::RED, "\033[31m"),
+            2  => array(Fonts::GREEN, "\033[32m"),
+            3  => array(Fonts::BROWN, "\033[33m"),
+            4  => array(Fonts::YELLOW, "\033[33m"),
+            5  => array(Fonts::BLUE, "\033[34m"),
+            6  => array(Fonts::PURPLE, "\033[35m"),
+            7  => array(Fonts::MAGENTA, "\033[35m"),
+            8  => array(Fonts::CYAN, "\033[36m"),
+            9  => array(Fonts::GREY, "\033[37m"),
             10 => array(Fonts::WHITE, "\033[37m"),
             11 => array(Fonts::RESET, "\033[39m"),
         );
@@ -63,16 +58,16 @@ class ObjectTest extends PHPUnit_Framework_TestCase
     public function setGetBackgroundDataProvider()
     {
         return array(
-            0 => array(Backgrounds::BLACK, "\033[40m"),
-            1 => array(Backgrounds::RED, "\033[41m"),
-            2 => array(Backgrounds::GREEN, "\033[42m"),
-            3 => array(Backgrounds::BROWN, "\033[43m"),
-            4 => array(Backgrounds::YELLOW, "\033[43m"),
-            5 => array(Backgrounds::BLUE, "\033[44m"),
-            6 => array(Backgrounds::PURPLE, "\033[45m"),
-            7 => array(Backgrounds::MAGENTA, "\033[45m"),
-            8 => array(Backgrounds::CYAN, "\033[46m"),
-            9 => array(Backgrounds::GREY, "\033[47m"),
+            0  => array(Backgrounds::BLACK, "\033[40m"),
+            1  => array(Backgrounds::RED, "\033[41m"),
+            2  => array(Backgrounds::GREEN, "\033[42m"),
+            3  => array(Backgrounds::BROWN, "\033[43m"),
+            4  => array(Backgrounds::YELLOW, "\033[43m"),
+            5  => array(Backgrounds::BLUE, "\033[44m"),
+            6  => array(Backgrounds::PURPLE, "\033[45m"),
+            7  => array(Backgrounds::MAGENTA, "\033[45m"),
+            8  => array(Backgrounds::CYAN, "\033[46m"),
+            9  => array(Backgrounds::GREY, "\033[47m"),
             10 => array(Backgrounds::WHITE, "\033[47m"),
             11 => array(Backgrounds::RESET, "\033[49m"),
         );

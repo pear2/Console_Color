@@ -245,15 +245,7 @@ class Color
      * Sets the flags.
      * 
      * Sets the flags to apply in the sequence. Note that flags are applied
-     * before all other settings, so for example, if you set
-     * {@link Flags::RESET}, you'll be applying the rest of your settings over
-     * the console's defaults, as opposed to applying your settings, only to
-     * clear them before they ever take effect.
-     * 
-     * Also, flags are applied in ascending order of their values, and hence,
-     * if you have "{@link Flags::RESET} | {@link Flags::INVERSE}", you'll get
-     * the the console's defaults with inverse colors, with the rest of your
-     * settings dealing with it as a starting point.
+     * before all other settings, in ascending order of the constant values.
      * 
      * @param int $flags The new flags to set. Unknown flags will be ignored
      *     when forming the sequence, but will be visible with

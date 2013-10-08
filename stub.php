@@ -91,17 +91,22 @@ if (!$isNotCli) {
     echo <<<HEREDOC
 
 \033[30;42mIf you are reading this on a green background (and black text), then
-this terminal supports colors, i.e. this package would actually do good.\033[0m
+this terminal supports color escape sequences, i.e. this package would actually
+be useful in this environment.\033[0m
 
-\033[32;44mIn case your default color is green, here's also a test with a blue
-background (and green text).\033[0m
+\033[32;44mIn case your default background color is green, here's also a test
+with a blue background (and green text).\033[0m
+
+If above you see something like "[30;42m", then this terminal does not support
+color escape sequences.
 
 HEREDOC;
 
     if (substr(PHP_OS, 0, 3) === 'WIN') {
         echo <<<HEREDOC
 
-If above you see something like "[30;42m", you'd need to install ANSICON.
+To add support for color escape sequences to Windows' command prompt,
+install ANSICON.
 See http://adoxa.hostmyway.net/ansicon/ or https://github.com/adoxa/ansicon.
 
 HEREDOC;
@@ -110,7 +115,7 @@ HEREDOC;
 
 The presense of the "ANSICON_VER" environment variable suggests ANSICON is
 already installed. If you are seeing "[30;42m" despite that, then ANSICON is
-not really installed, and your terminal is only pretending that it is.
+not really installed, and the command prompt is only pretending that it is.
 
 HEREDOC;
         }

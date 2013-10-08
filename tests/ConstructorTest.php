@@ -303,4 +303,14 @@ class ConstructorTest extends PHPUnit_Framework_TestCase
         $this->assertSame(array(), $color->getStyles());
         $this->assertSame($sequence, (string)$color);
     }
+
+    public function testDefaultConstructor()
+    {
+        $color = new Color();
+        $this->assertSame(Fonts::KEEP, $color->getFont());
+        $this->assertSame(Backgrounds::KEEP, $color->getBackground());
+        $this->assertSame(Flags::NONE, $color->getFlags());
+        $this->assertSame(array(), $color->getStyles());
+        $this->assertSame("\033[m", (string)$color);
+    }
 }

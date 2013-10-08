@@ -28,6 +28,13 @@ use UnexpectedValueException as U;
  */
 class UnexpectedValueException extends U implements Exception
 {
+    /**
+     * Used when an unexpected font value is supplied.
+     */
     const CODE_FONT       = 1;
+
+    /**
+     * Used when an unexpected background value is supplied.
+     */
     const CODE_BACKGROUND = 2;
 }

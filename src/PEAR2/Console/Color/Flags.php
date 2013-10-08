@@ -28,8 +28,26 @@ use ReflectionClass;
  */
 abstract class Flags
 {
+    /**
+     * Used at {@link \PEAR2\Console\Color::setFlags()} to specify that no
+     * flags should be applied.
+     */
     const NONE    = 0;
+
+    /**
+     * Used at {@link \PEAR2\Console\Color::setFlags()} as part of a bitmask.
+     * If specified, resets all color and style information before applying
+     * everything else.
+     */
     const RESET   = 1;
+
+    /**
+     * Used at {@link \PEAR2\Console\Color::setFlags()} as part of a bitmask.
+     * If specified, inverses the font and background colors, before letting
+     * the remaining settings further modify things.
+     * If specified together with {@link self::RESET}, takes effect AFTER the
+     * reset.
+     */
     const INVERSE = 2;
 
     /**

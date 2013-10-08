@@ -27,17 +27,81 @@ namespace PEAR2\Console\Color;
  */
 abstract class Backgrounds
 {
+    /**
+     * Used at {@link \PEAR2\Console\Color::setBackground()} to specify that
+     * the background color already in effect should be kept.
+     */
     const KEEP    = null;
+
+    /**
+     * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
+     * background color to black.
+     */
     const BLACK   = 40;
+
+    /**
+     * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
+     * background color to red.
+     */
     const RED     = 41;
+
+    /**
+     * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
+     * background color to green.
+     */
     const GREEN   = 42;
+
+    /**
+     * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
+     * background color to brown/yellow (implementation defined).
+     */
     const BROWN   = 43;
+
+    /**
+     * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
+     * background color to brown/yellow (implementation defined).
+     */
     const YELLOW  = 43;
+
+    /**
+     * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
+     * background color to blue.
+     */
     const BLUE    = 44;
+
+    /**
+     * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
+     * background color to purple/magenta (implementation defined).
+     */
     const PURPLE  = 45;
+
+    /**
+     * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
+     * background color to purple/magenta (implementation defined).
+     */
     const MAGENTA = 45;
+
+    /**
+     * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
+     * background color to cyan.
+     */
     const CYAN    = 46;
+
+    /**
+     * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
+     * background color to grey/white (implementation defined).
+     */
     const GREY    = 47;
+
+    /**
+     * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
+     * background color to grey/white (implementation defined).
+     */
     const WHITE   = 47;
+
+    /**
+     * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
+     * background color to whatever the default one is.
+     */
     const RESET   = 49;
 }

@@ -27,10 +27,45 @@ use ReflectionClass;
  */
 abstract class Styles
 {
+    /**
+     * Used in {@link \PEAR2\Console\Color::setStyles()} to match all styles.
+     */
     const ALL       = null;
+
+    /**
+     * Used in {@link \PEAR2\Console\Color::setStyles()} as part of a bitmask.
+     * If specified, matches the bold style.
+     * When this style is enabled, the font is bolder.
+     * With ANSICON, the font color becomes more intense (but not bolder).
+     */
     const BOLD      = 1;
+
+    /**
+     * Used in {@link \PEAR2\Console\Color::setStyles()} as part of a bitmask.
+     * If specified, matches the underline style.
+     * When this style is enabled, the font is underlined.
+     * With ANSICON, the background color becomes more intense
+     * (and the font is not underlined), same as {@link self::BLINK}.
+     */
     const UNDERLINE = 2;
+
+    /**
+     * Used in {@link \PEAR2\Console\Color::setStyles()} as part of a bitmask.
+     * If specified, matches the blink style.
+     * When this style is enabled, the font color switches between its regular
+     * color and the background color at regular (implementation defined)
+     * intervals, creating the illusion of a blinking text.
+     * With ANSICON, the background color becomes more intense
+     * (and the font is not blinking), same as with {@link self::UNDERLINE}.
+     */
     const BLINK     = 4;
+
+    /**
+     * Used in {@link \PEAR2\Console\Color::setStyles()} as part of a bitmask.
+     * If specified, matches the concealed style.
+     * When this style is enabled, the font color becomes the background color,
+     * rendering the text invisible.
+     */
     const CONCEALED = 8;
 
     /**
