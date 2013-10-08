@@ -19,8 +19,8 @@ and it will automatically be converted to an escape sequence when used as a stri
   <email>boen.robot@gmail.com</email>
   <active>yes</active>
  </lead>
- <date>2013-10-05</date>
- <time>19:27:48</time>
+ <date>2013-10-08</date>
+ <time>03:17:07</time>
  <version>
   <release>0.2.0</release>
   <api>0.2.0</api>
@@ -65,6 +65,16 @@ Almost a complete rewrite.</notes>
      </dir>
     </dir>
    </dir>
+   <dir name="tests" baseinstalldir="/">
+    <file role="test" name="bootstrap.php">
+     <tasks:replace from="../src" to="php_dir" type="pear-config"/>
+    </file>
+    <file role="test" name="ConstructorTest.php"/>
+    <file role="test" name="ObjectTest.php"/>
+    <file role="test" name="phpunit.xml">
+     <tasks:replace from="../src" to="php_dir" type="pear-config"/>
+    </file>
+   </dir>
   </dir>
  </contents>
  <dependencies>
@@ -92,6 +102,10 @@ Almost a complete rewrite.</notes>
    <install name="src/PEAR2/Console/Color/Fonts.php" as="PEAR2/Console/Color/Fonts.php"/>
    <install name="src/PEAR2/Console/Color/Styles.php" as="PEAR2/Console/Color/Styles.php"/>
    <install name="src/PEAR2/Console/Color/UnexpectedValueException.php" as="PEAR2/Console/Color/UnexpectedValueException.php"/>
+   <install name="tests/bootstrap.php" as="bootstrap.php"/>
+   <install name="tests/ConstructorTest.php" as="ConstructorTest.php"/>
+   <install name="tests/ObjectTest.php" as="ObjectTest.php"/>
+   <install name="tests/phpunit.xml" as="phpunit.xml"/>
   </filelist>
  </phprelease>
 </package>

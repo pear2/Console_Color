@@ -22,6 +22,17 @@ $packageGen = function (
     v2 $package,
     v2 $compatible = null
 ) {
+    $srcDirTask = array(
+        'tasks:replace' => array(
+            array(
+                'attribs' => array(
+                    'from' => '../src',
+                    'to' => 'php_dir',
+                    'type' => 'pear-config'
+                )
+            )
+        )
+    );
     $srcFileTasks = array(
         'tasks:replace' => array(
             array(
@@ -33,10 +44,37 @@ $packageGen = function (
             )
         )
     );
+
     $hasCompatible = null !== $compatible;
     if ($hasCompatible) {
         $compatible->license = $package->license;
+        $compatible->files[
+            "test/{$package->channel}/{$package->name}/bootstrap.php"
+            ] = array_merge_recursive(
+                $compatible->files[
+                "test/{$package->channel}/{$package->name}/bootstrap.php"
+                ]->getArrayCopy(),
+                $srcDirTask
+            );
+        $compatible->files[
+            "test/{$package->channel}/{$package->name}/phpunit.xml"
+            ] = array_merge_recursive(
+                $compatible->files[
+                "test/{$package->channel}/{$package->name}/phpunit.xml"
+                ]->getArrayCopy(),
+                $srcDirTask
+            );
     }
+
+    $package->files['tests/bootstrap.php'] = array_merge_recursive(
+        $package->files['tests/bootstrap.php']->getArrayCopy(),
+        $srcDirTask
+    );
+
+    $package->files['tests/phpunit.xml'] = array_merge_recursive(
+        $package->files['tests/phpunit.xml']->getArrayCopy(),
+        $srcDirTask
+    );
 
     $oldCwd = getcwd();
     chdir(__DIR__);
