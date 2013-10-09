@@ -27,7 +27,8 @@ if (false !== $autoloader) {
         include_once $autoloader;
         Autoload::initialize(realpath('../src'));
     } else {
-        die('No recognized autoloader is available.');
+        fwrite(STDERR, 'No recognized autoloader is available.');
+        exit(1);
     }
 }
 unset($autoloader);
