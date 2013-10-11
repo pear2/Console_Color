@@ -64,7 +64,9 @@ abstract class Styles
      * Used in {@link \PEAR2\Console\Color::setStyles()} as part of a bitmask.
      * If specified, matches the concealed style.
      * When this style is enabled, the font color becomes the background color,
-     * rendering the text invisible.
+     * rendering the text invisible. This style is particularly useful for
+     * implementations where simply setting the same color and background color
+     * would not necesarily provide a fully invisibile text (e.g. ANSICON).
      */
     const CONCEALED = 8;
 
@@ -104,7 +106,7 @@ abstract class Styles
 
         $result = array();
         foreach ($validStyles as $flag) {
-            if (($styles & $flag) !== 0) {
+            if ($styles & $flag) {
                 $result[] = $flag;
             }
         }

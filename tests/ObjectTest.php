@@ -6,7 +6,6 @@ use PEAR2\Console\Color;
 use PEAR2\Console\Color\Backgrounds;
 use PEAR2\Console\Color\Fonts;
 use PEAR2\Console\Color\Flags;
-use PEAR2\Console\Color\UnexpectedValueException;
 use PHPUnit_Framework_TestCase;
 
 class ObjectTest extends PHPUnit_Framework_TestCase
@@ -25,17 +24,22 @@ class ObjectTest extends PHPUnit_Framework_TestCase
     {
         return array(
             0  => array(Fonts::BLACK, "\033[30m"),
-            1  => array(Fonts::RED, "\033[31m"),
-            2  => array(Fonts::GREEN, "\033[32m"),
-            3  => array(Fonts::BROWN, "\033[33m"),
-            4  => array(Fonts::YELLOW, "\033[33m"),
-            5  => array(Fonts::BLUE, "\033[34m"),
-            6  => array(Fonts::PURPLE, "\033[35m"),
-            7  => array(Fonts::MAGENTA, "\033[35m"),
-            8  => array(Fonts::CYAN, "\033[36m"),
-            9  => array(Fonts::GREY, "\033[37m"),
-            10 => array(Fonts::WHITE, "\033[37m"),
-            11 => array(Fonts::RESET, "\033[39m"),
+            1  => array(Fonts::GREY, "\033[30m"),
+            2  => array(Fonts::MAROON, "\033[31m"),
+            3  => array(Fonts::RED, "\033[31m"),
+            4  => array(Fonts::LIME, "\033[32m"),
+            5  => array(Fonts::GREEN, "\033[32m"),
+            6  => array(Fonts::BROWN, "\033[33m"),
+            7  => array(Fonts::YELLOW, "\033[33m"),
+            8  => array(Fonts::NAVY, "\033[34m"),
+            9  => array(Fonts::BLUE, "\033[34m"),
+            10 => array(Fonts::PURPLE, "\033[35m"),
+            11 => array(Fonts::MAGENTA, "\033[35m"),
+            12 => array(Fonts::TEAL, "\033[36m"),
+            13 => array(Fonts::CYAN, "\033[36m"),
+            14 => array(Fonts::SILVER, "\033[37m"),
+            15 => array(Fonts::WHITE, "\033[37m"),
+            16 => array(Fonts::RESET, "\033[39m"),
         );
     }
 
@@ -59,17 +63,22 @@ class ObjectTest extends PHPUnit_Framework_TestCase
     {
         return array(
             0  => array(Backgrounds::BLACK, "\033[40m"),
-            1  => array(Backgrounds::RED, "\033[41m"),
-            2  => array(Backgrounds::GREEN, "\033[42m"),
-            3  => array(Backgrounds::BROWN, "\033[43m"),
-            4  => array(Backgrounds::YELLOW, "\033[43m"),
-            5  => array(Backgrounds::BLUE, "\033[44m"),
-            6  => array(Backgrounds::PURPLE, "\033[45m"),
-            7  => array(Backgrounds::MAGENTA, "\033[45m"),
-            8  => array(Backgrounds::CYAN, "\033[46m"),
-            9  => array(Backgrounds::GREY, "\033[47m"),
-            10 => array(Backgrounds::WHITE, "\033[47m"),
-            11 => array(Backgrounds::RESET, "\033[49m"),
+            1  => array(Backgrounds::GREY, "\033[40m"),
+            2  => array(Backgrounds::MAROON, "\033[41m"),
+            3  => array(Backgrounds::RED, "\033[41m"),
+            4  => array(Backgrounds::GREEN, "\033[42m"),
+            5  => array(Backgrounds::LIME, "\033[42m"),
+            6  => array(Backgrounds::BROWN, "\033[43m"),
+            7  => array(Backgrounds::YELLOW, "\033[43m"),
+            8  => array(Backgrounds::NAVY, "\033[44m"),
+            9  => array(Backgrounds::BLUE, "\033[44m"),
+            10 => array(Backgrounds::PURPLE, "\033[45m"),
+            11 => array(Backgrounds::MAGENTA, "\033[45m"),
+            12 => array(Backgrounds::TEAL, "\033[46m"),
+            13 => array(Backgrounds::CYAN, "\033[46m"),
+            14 => array(Backgrounds::SILVER, "\033[47m"),
+            15 => array(Backgrounds::WHITE, "\033[47m"),
+            16 => array(Backgrounds::RESET, "\033[49m"),
         );
     }
 
@@ -254,6 +263,18 @@ class ObjectTest extends PHPUnit_Framework_TestCase
         $this->assertSame(
             array(),
             $this->object->getStyles()
+        );
+    }
+
+    public function testFluency()
+    {
+        $this->assertSame(
+            $this->object,
+            $this->object
+                ->setFont(Fonts::BLACK)
+                ->setBackground(Backgrounds::BLACK)
+                ->setFlags(Flags::RESET)
+                ->setStyles(Styles::ALL, true)
         );
     }
 }

@@ -79,7 +79,7 @@ abstract class Flags
             array_unique($flagsClass->getConstants(), SORT_NUMERIC)
         );
         foreach ($validFlags as $flag) {
-            if (($flags & $flag) !== 0) {
+            if ($flags & $flag) {
                 $result[] = static::$flagCodes[$flag];
             }
         }

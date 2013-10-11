@@ -35,21 +35,39 @@ abstract class Backgrounds
 
     /**
      * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
-     * background color to black.
+     * background color to black/grey (implmementation defined).
      */
     const BLACK   = 40;
 
     /**
      * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
-     * background color to red.
+     * background color to black/grey (implementation defined).
+     */
+    const GREY    = 40;
+
+    /**
+     * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
+     * background color to maroon/red (implementation defined).
+     */
+    const MAROON  = 41;
+
+    /**
+     * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
+     * background color to maroon/red (implementation defined).
      */
     const RED     = 41;
 
     /**
      * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
-     * background color to green.
+     * background color to green/lime (implementation defined).
      */
     const GREEN   = 42;
+
+    /**
+     * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
+     * background color to green/lime (implementation defined).
+     */
+    const LIME    = 42;
 
     /**
      * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
@@ -65,7 +83,13 @@ abstract class Backgrounds
 
     /**
      * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
-     * background color to blue.
+     * background color to navy/blue (implementation defined).
+     */
+    const NAVY    = 44;
+
+    /**
+     * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
+     * background color to navy/blue (implementation defined).
      */
     const BLUE    = 44;
 
@@ -83,19 +107,25 @@ abstract class Backgrounds
 
     /**
      * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
-     * background color to cyan.
+     * background color to teal/cyan (implementation defined).
+     */
+    const TEAL    = 46;
+
+    /**
+     * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
+     * background color to teal/cyan (implementation defined).
      */
     const CYAN    = 46;
 
     /**
      * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
-     * background color to grey/white (implementation defined).
+     * background color to silver/white (implementation defined).
      */
-    const GREY    = 47;
+    const SILVER  = 47;
 
     /**
      * Used at {@link \PEAR2\Console\Color::setBackground()} to set the
-     * background color to grey/white (implementation defined).
+     * background color to silver/white (implementation defined).
      */
     const WHITE   = 47;
 

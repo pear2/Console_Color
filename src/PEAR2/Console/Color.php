@@ -142,8 +142,9 @@ class Color
     /**
      * Creates a new color.
      * 
-     * Note that leaving both the font and background color untouched will in
-     * essence result in a sequence that resets to the default styles.
+     * Note that leaving all arguments with their default values (and not
+     * applying styles) would result in a sequence that resets all settings to
+     * the console's defaults.
      * 
      * @param int|null $font       Initial font color.
      * @param int|null $background Initial backgorund color.
