@@ -98,7 +98,7 @@ abstract class Styles
             array_unique($flagsClass->getConstants(), SORT_NUMERIC)
         );
         unset($validStyles[array_search(self::ALL, $validStyles, true)]);
-        
+
         if (self::ALL === $styles) {
             return $validStyles;
         }

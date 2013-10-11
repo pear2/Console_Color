@@ -19,7 +19,7 @@ class ObjectTest extends PHPUnit_Framework_TestCase
     {
         $this->object = new Color();
     }
-    
+
     public function setGetFontDataProvider()
     {
         return array(
@@ -58,7 +58,7 @@ class ObjectTest extends PHPUnit_Framework_TestCase
         $this->assertSame($font, $this->object->getFont());
         $this->assertSame($sequence, (string)$this->object);
     }
-    
+
     public function setGetBackgroundDataProvider()
     {
         return array(
@@ -97,7 +97,7 @@ class ObjectTest extends PHPUnit_Framework_TestCase
         $this->assertSame($backgorund, $this->object->getBackground());
         $this->assertSame($sequence, (string)$this->object);
     }
-    
+
     public function setGetFlagsDataProvider()
     {
         return array(
@@ -246,7 +246,7 @@ class ObjectTest extends PHPUnit_Framework_TestCase
         $this->assertSame(true, $this->object->getStyles(Styles::BLINK));
         $this->assertSame(null, $this->object->getStyles(Styles::CONCEALED));
     }
-    
+
     public function testUnsetStyle()
     {
         $this->object->setStyles(Styles::BOLD, true);

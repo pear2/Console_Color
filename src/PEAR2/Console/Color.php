@@ -352,7 +352,7 @@ class Color
             if (Backgrounds::KEEP !== $this->backgorund) {
                 $seq .= "{$this->backgorund};";
             }
-            
+
             foreach ($this->styles as $style => $state) {
                 $seq .= call_user_func(
                     array(static::$stylesResolver, 'getCode'),
