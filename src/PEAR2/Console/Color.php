@@ -7,9 +7,9 @@
  *
  * @category Console
  * @package  Console_Color
- * @author   Ivo Nascimento <ivo@o8o.com.br>
  * @author   Vasil Rangelov <boen.robot@gmail.com>
- * @license  http://www.opensource.org/licenses/bsd-license.php New BSD License
+ * @author   Ivo Nascimento <ivo@o8o.com.br>
+ * @license  http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  * @version  GIT: $Id$
  * @link     http://pear.php.net/package/Console_Color
  */
@@ -29,20 +29,20 @@ use ReflectionClass;
  * @package  Console_Color
  * @author   Ivo Nascimento <ivo@o8o.com.br>
  * @author   Vasil Rangelov <boen.robot@gmail.com>
- * @license  http://www.opensource.org/licenses/bsd-license.php New BSD License
+ * @license  http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  * @link     http://pear2.php.net/PEAR2_Console_Color
  */
 class Color
 {
     /**
-     * @var array List of valid font colors. Filled by
-     *     {@link fillValidators()}.
+     * @var array List of valid font colors.
+     *     Filled by {@link fillValidators()}.
      */
     protected static $validFonts = array();
 
     /**
-     * @var array List of valid background colors. Filled by
-     *     {@link fillValidators()}.
+     * @var array List of valid background colors.
+     *     Filled by {@link fillValidators()}.
      */
     protected static $validBackgorunds = array();
 
@@ -62,12 +62,12 @@ class Color
     protected $flags = 0;
 
     /**
-     * @var int|null
+     * @var int|null The code for the currently specified font color.
      */
     protected $font = null;
 
     /**
-     * @var int|null
+     * @var int|null The code for the currently specified background color.
      */
     protected $backgorund = null;
 

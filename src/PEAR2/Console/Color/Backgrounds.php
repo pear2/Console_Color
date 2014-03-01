@@ -8,8 +8,7 @@
  * @category  Console
  * @package   PEAR2_Console_Color
  * @author    Ivo Nascimento <ivo@o8o.com.br>
- * @copyright 2011 Ivo Nascimento
- * @license   http://www.opensource.org/licenses/bsd-license.php New BSD License
+ * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  * @version   GIT: $Id$
  * @link      http://pear2.php.net/PEAR2_Console_Color
  */
@@ -22,7 +21,7 @@ namespace PEAR2\Console\Color;
  * @package   PEAR2_Console_Color
  * @author    Ivo Nascimento <ivo@o8o.com.br>
  * @copyright 2011 Ivo Nascimento
- * @license   http://www.opensource.org/licenses/bsd-license.php New BSD License
+ * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  * @link      http://pear2.php.net/PEAR2_Console_Color
  */
 abstract class Backgrounds

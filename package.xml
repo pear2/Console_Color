@@ -19,23 +19,27 @@ and it will automatically be converted to an escape sequence when used as a stri
   <email>boen.robot@gmail.com</email>
   <active>yes</active>
  </lead>
- <date>2013-10-08</date>
- <time>17:00:17</time>
+ <date>2014-03-02</date>
+ <time>15:18:34</time>
  <version>
-  <release>0.2.0</release>
+  <release>1.0.0</release>
   <api>0.2.0</api>
  </version>
  <stability>
-  <release>alpha</release>
-  <api>alpha</api>
+  <release>stable</release>
+  <api>stable</api>
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
- <notes>* A brand new API.
-* CS fixes.
-
-Almost a complete rewrite.</notes>
+ <notes>First stable release.&#13;
+&#13;
+(complete rewrite from the alpha)</notes>
  <contents>
   <dir name="/">
+   <dir name="docs" baseinstalldir="/">
+    <file role="doc" name="apigen.neon"/>
+    <file role="doc" name="doxygen.ini"/>
+    <file role="doc" name="phpdoc.dist.xml"/>
+   </dir>
    <dir name="src" baseinstalldir="/">
     <dir name="PEAR2">
      <dir name="Console">
@@ -95,6 +99,9 @@ Almost a complete rewrite.</notes>
  </dependencies>
  <phprelease>
   <filelist>
+   <install name="docs/apigen.neon" as="apigen.neon"/>
+   <install name="docs/doxygen.ini" as="doxygen.ini"/>
+   <install name="docs/phpdoc.dist.xml" as="phpdoc.dist.xml"/>
    <install name="src/PEAR2/Console/Color.php" as="PEAR2/Console/Color.php"/>
    <install name="src/PEAR2/Console/Color/Backgrounds.php" as="PEAR2/Console/Color/Backgrounds.php"/>
    <install name="src/PEAR2/Console/Color/Exception.php" as="PEAR2/Console/Color/Exception.php"/>
