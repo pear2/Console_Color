@@ -1,0 +1,10 @@
+imports:
+    - php
+inherit: true
+tools:
+    external_code_coverage: true
+    php_sim: false
+    php_cpd: true
+    php_code_sniffer:
+        config:
+            standard: PEAR

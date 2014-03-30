@@ -10,4 +10,6 @@ before_script:
   - pyrus install PEAR2_Autoload-alpha
   - cd tests
 script:
-  - phpunit --configuration phpunit.xml
+  - phpunit --coverage-clover=coverage.clover --configuration phpunit.xml
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * UnexpectedValueException class for PEAR2_Console_Color.
+ * DomainException class for PEAR2_Console_Color.
  * 
  * PHP version 5.3
  *
@@ -14,10 +14,10 @@
  */
 namespace PEAR2\Console\Color;
 
-use UnexpectedValueException as U;
+use DomainException as D;
 
 /**
- * UnexpectedValueException class for PEAR2_Console_Color.
+ * Exception class for PEAR2_Console_Color.
  *
  * @category  Console
  * @package   PEAR2_Console_Color
@@ -25,15 +25,15 @@ use UnexpectedValueException as U;
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  * @link      http://pear2.php.net/PEAR2_Console_Color
  */
-class UnexpectedValueException extends U implements Exception
+class DomainException extends D implements Exception
 {
     /**
-     * Used when an unexpected font value is supplied.
+     * Used when an invalid flags resolver is supplied.
      */
-    const CODE_FONT       = 1;
+    const CODE_FLAGS  = 1;
 
     /**
-     * Used when an unexpected background value is supplied.
+     * Used when an invalid styles resolver is supplied.
      */
-    const CODE_BACKGROUND = 2;
+    const CODE_STYLES = 2;
 }

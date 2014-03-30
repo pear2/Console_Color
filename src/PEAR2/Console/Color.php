@@ -20,6 +20,7 @@ use PEAR2\Console\Color\Flags;
 use PEAR2\Console\Color\Fonts;
 use PEAR2\Console\Color\Styles;
 use PEAR2\Console\Color\UnexpectedValueException;
+use PEAR2\Console\Color\DomainException;
 use ReflectionClass;
 
 /**
@@ -45,16 +46,6 @@ class Color
      *     Filled by {@link fillValidators()}.
      */
     protected static $validBackgorunds = array();
-
-    /**
-     * @var string Name of a class that is used to resolve flags to codes.
-     */
-    protected static $flagsResolver = '';
-
-    /**
-     * @var string Name of a class that is used to resolve styles to codes.
-     */
-    protected static $stylesResolver = '';
 
     /**
      * @var int Flags to set.
@@ -83,6 +74,64 @@ class Color
     protected $sequence = null;
 
     /**
+     * @var string Name of a class that is used to resolve flags to codes.
+     */
+    private static $_flagsResolver = 'PEAR2\Console\Color\Flags';
+
+    /**
+     * @var string Name of a class that is used to resolve styles to codes.
+     */
+    private static $_stylesResolver = 'PEAR2\Console\Color\Styles';
+
+    /**
+     * Sets the flag resolver class name.
+     * 
+     * @param string $flags Name of class that resolves flags to codes.
+     *     Must inheirt from {@link Flags}. Constants of this class are
+     *     considered the valid flags, and the coresponding codes must be
+     *     overriden at the static $flagCodes property.
+     * 
+     * @return void
+     */
+    final protected static function setFlagsResolver($flags)
+    {
+        if (self::$_flagsResolver !== $flags) {
+            if (is_subclass_of($flags, self::$_flagsResolver)) {
+                self::$_flagsResolver = $flags;
+            } else {
+                throw new DomainException(
+                    DomainException::CODE_FLAGS,
+                    'Invalid flags resolver supplied'
+                );
+            }
+        }
+    }
+
+    /**
+     * Sets the style resolver class name.
+     * 
+     * @param string $styles Name of class that resolves styles to codes.
+     *     Must inherit from {@link Styles}. Constants of this class are
+     *     considered the valid styles, and the corresponding off/on codes must
+     *     be overriden at the static $styleCodes property.
+     * 
+     * @return void
+     */
+    final protected static function setStylesResolver($styles)
+    {
+        if (self::$_stylesResolver !== $styles) {
+            if (is_subclass_of($styles, self::$_stylesResolver)) {
+                self::$_stylesResolver = $styles;
+            } else {
+                throw new DomainException(
+                    DomainException::CODE_STYLES,
+                    'Invalid styles resolver supplied'
+                );
+            }
+        }
+    }
+
+    /**
      * Fills the list of valid fonts and backgrounds.
      * 
      * Classes extending this one that wish to add additional valid colors,
@@ -93,22 +142,12 @@ class Color
      *     valid font colors.
      * @param string $backgrounds Name of class, the constants of which are
      *     valid background colors.
-     * @param string $flags       Name of class that resolves flags to codes.
-     *     Must inheirt from {@link Flags}. Constants of this
-     *     class are considered the valid flags, and the coresponding codes must
-     *     be overriden at the static $flagCodes property.
-     * @param string $styles      Name of class that resolves styles to codes.
-     *     Must inherit from {@link Styles}. Constants of this class are
-     *     considered the valid styles, and the corresponding off/on codes must
-     *     be overriden at the static $styleCodes property.
      * 
      * @return void
      */
     protected static function fillVlidators(
         $fonts,
-        $backgrounds,
-        $flags,
-        $styles
+        $backgrounds
     ) {
         if (empty(static::$validFonts)) {
             $fonts = new ReflectionClass($fonts);
@@ -122,20 +161,6 @@ class Color
             static::$validBackgorunds = array_values(
                 array_unique($bgs->getConstants(), SORT_REGULAR)
             );
-        }
-
-        if ('' === static::$flagsResolver) {
-            $base = __CLASS__ . '\Flags';
-            if ($base === $flags || is_subclass_of($flags, $base)) {
-                static::$flagsResolver = $flags;
-            }
-        }
-
-        if ('' === static::$stylesResolver) {
-            $base = __CLASS__ . '\Styles';
-            if ($base === $styles || is_subclass_of($styles, $base)) {
-                static::$stylesResolver = $styles;
-            }
         }
     }
 
@@ -161,10 +186,10 @@ class Color
     ) {
         static::fillVlidators(
             __CLASS__ . '\Fonts',
-            __CLASS__ . '\Backgrounds',
-            __CLASS__ . '\Flags',
-            __CLASS__ . '\Styles'
+            __CLASS__ . '\Backgrounds'
         );
+        static::setFlagsResolver(__CLASS__ . '\Flags');
+        static::setStylesResolver(__CLASS__ . '\Styles');
         $this->setFont($font);
         $this->setBackground($background);
         $this->setFlags($flags);
@@ -298,7 +323,7 @@ class Color
     public function setStyles($styles, $state)
     {
         $matchingStyles = call_user_func(
-            array(static::$stylesResolver, 'match'),
+            array(self::$_stylesResolver, 'match'),
             $styles
         );
         if (null === $state) {
@@ -333,35 +358,25 @@ class Color
     public function __toString()
     {
         if (null === $this->sequence) {
-            $seq = "\033[";
-
-            $flags = implode(
+            $seq = implode(
                 ';',
                 call_user_func(
-                    array(static::$flagsResolver, 'getCodes'),
+                    array(self::$_flagsResolver, 'getCodes'),
                     $this->flags
                 )
-            );
-            if ('' !== $flags) {
-                $seq .= $flags . ';';
-            }
-
-            if (Fonts::KEEP !== $this->font) {
-                $seq .= "{$this->font};";
-            }
-            if (Backgrounds::KEEP !== $this->backgorund) {
-                $seq .= "{$this->backgorund};";
-            }
+            ) . ";{$this->font};{$this->backgorund};";
 
             foreach ($this->styles as $style => $state) {
                 $seq .= call_user_func(
-                    array(static::$stylesResolver, 'getCode'),
+                    array(self::$_stylesResolver, 'getCode'),
                     $style,
                     $state
                 ) . ';';
             }
 
-            $this->sequence = rtrim($seq, ';') . 'm';
+            $this->sequence = "\033["
+                . trim(preg_replace('/\;{2,}/', ';', $seq), ';')
+                . 'm';
         }
 
         return $this->sequence;
