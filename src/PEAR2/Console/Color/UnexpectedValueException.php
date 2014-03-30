@@ -19,11 +19,11 @@ use UnexpectedValueException as U;
 /**
  * UnexpectedValueException class for PEAR2_Console_Color.
  *
- * @category  Console
- * @package   PEAR2_Console_Color
- * @author    Vasil Rangelov <boen.robot@gmail.com>
- * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
- * @link      http://pear2.php.net/PEAR2_Console_Color
+ * @category Console
+ * @package  PEAR2_Console_Color
+ * @author   Vasil Rangelov <boen.robot@gmail.com>
+ * @license  http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
+ * @link     http://pear2.php.net/PEAR2_Console_Color
  */
 class UnexpectedValueException extends U implements Exception
 {

@@ -5,12 +5,12 @@
  * 
  * PHP version 5.3
  *
- * @category  Console
- * @package   PEAR2_Console_Color
- * @author    Ivo Nascimento <ivo@o8o.com.br>
- * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
- * @version   GIT: $Id$
- * @link      http://pear2.php.net/PEAR2_Console_Color
+ * @category Console
+ * @package  PEAR2_Console_Color
+ * @author   Ivo Nascimento <ivo@o8o.com.br>
+ * @license  http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
+ * @version  GIT: $Id$
+ * @link     http://pear2.php.net/PEAR2_Console_Color
  */
 namespace PEAR2\Console\Color;
 

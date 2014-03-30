@@ -8,7 +8,7 @@
  * @category Console
  * @package  PEAR2_Console_Color
  * @author   Vasil Rangelov <boen.robot@gmail.com>
- * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
+ * @license  http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  * @version  GIT: $Id$
  * @link     http://pear2.php.net/PEAR2_Console_Color
  */
@@ -87,12 +87,13 @@ Rerun this file from the command line to see if you can use it there.
 HEREDOC;
 } else {
     echo <<<HEREDOC
-\033[30;42m If you are reading this on a green background (and black text), then \033[0m
-\033[30;42m this terminal supports color escape sequences, i.e. this package would \033[0m
-\033[30;42m actually be useful in this environment. \033[0m
+\033[30;42m If you are reading this as black text (on green background), \033[0m
+\033[30;42m this terminal supports color escape sequences,               \033[0m
+\033[30;42m i.e. this package would actually be useful                   \033[0m
+\033[30;42m in this environment.                                         \033[0m
 
-\033[32;44m In case your default background color is green, here's also a test \033[0m
-\033[32;44m with a blue background (and green text). \033[0m
+\033[32;44m In case your default background color is green,              \033[0m
+\033[32;44m here's also a test with green text (on blue background).     \033[0m
 
 If above you see something like "[30;42m", then this terminal does not support
 color escape sequences.
