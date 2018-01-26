@@ -36,61 +36,82 @@ use ReflectionClass;
 class Color
 {
     /**
-     * @var array List of valid font colors.
-     *     Filled by {@link fillValidators()}.
+     * List of valid font colors.
+     *
+     * Filled by {@link fillValidators()}.
+     *
+     * @var array
      */
     protected static $validFonts = array();
 
     /**
-     * @var array List of valid background colors.
-     *     Filled by {@link fillValidators()}.
+     * List of valid background colors.
+     *
+     * Filled by {@link fillValidators()}.
+     *
+     * @var array
      */
     protected static $validBackgorunds = array();
 
     /**
-     * @var int Flags to set.
+     * Flags to set.
+     *
+     * @var int
      */
     protected $flags = 0;
 
     /**
-     * @var int|null The code for the currently specified font color.
+     * The code for the currently specified font color.
+     *
+     * @var int|null
      */
     protected $font = null;
 
     /**
-     * @var int|null The code for the currently specified background color.
+     * The code for the currently specified background color.
+     *
+     * @var int|null
      */
     protected $backgorund = null;
 
     /**
-     * @var bool[] Array with the status of each style.
+     * Array with the status of each style.
+     *
+     * @var bool[]
      */
     protected $styles = array();
 
     /**
-     * @var string|null The string to write to console to get the specified
-     *     styling. NULL when the string needs to be regenerated.
+     * The string to write to console to get the specified styling.
+     *
+     * NULL when the string needs to be regenerated.
+     *
+     * @var string|null
      */
     protected $sequence = null;
 
     /**
-     * @var string Name of a class that is used to resolve flags to codes.
+     * Name of a class that is used to resolve flags to codes.
+     *
+     * @var string
      */
     private static $_flagsResolver = 'PEAR2\Console\Color\Flags';
 
     /**
-     * @var string Name of a class that is used to resolve styles to codes.
+     * Name of a class that is used to resolve styles to codes.
+     *
+     * @var string
      */
     private static $_stylesResolver = 'PEAR2\Console\Color\Styles';
 
     /**
      * Sets the flag resolver class name.
-     * 
+     *
      * @param string $flags Name of class that resolves flags to codes.
      *     Must inheirt from {@link Flags}. Constants of this class are
      *     considered the valid flags, and the coresponding codes must be
      *     overriden at the static $flagCodes property.
-     * 
+     *
      * @return void
      */
     final protected static function setFlagsResolver($flags)
@@ -109,12 +130,12 @@ class Color
 
     /**
      * Sets the style resolver class name.
-     * 
+     *
      * @param string $styles Name of class that resolves styles to codes.
      *     Must inherit from {@link Styles}. Constants of this class are
      *     considered the valid styles, and the corresponding off/on codes must
      *     be overriden at the static $styleCodes property.
-     * 
+     *
      * @return void
      */
     final protected static function setStylesResolver($styles)
@@ -133,16 +154,16 @@ class Color
 
     /**
      * Fills the list of valid fonts and backgrounds.
-     * 
+     *
      * Classes extending this one that wish to add additional valid colors,
      * flags or styles should call this method in their own constructor BEFORE
      * calling the parent constructor.
-     * 
+     *
      * @param string $fonts       Name of class, the constants of which are
      *     valid font colors.
      * @param string $backgrounds Name of class, the constants of which are
      *     valid background colors.
-     * 
+     *
      * @return void
      */
     protected static function fillVlidators(
@@ -166,15 +187,15 @@ class Color
 
     /**
      * Creates a new color.
-     * 
+     *
      * Note that leaving all arguments with their default values (and not
      * applying styles) would result in a sequence that resets all settings to
      * the console's defaults.
-     * 
+     *
      * @param int|null $font       Initial font color.
      * @param int|null $background Initial backgorund color.
      * @param int      $flags      Initial flags.
-     * 
+     *
      * @see setFlags()
      * @see setStyles()
      * @see __toString()
@@ -197,7 +218,7 @@ class Color
 
     /**
      * Gets the font color.
-     * 
+     *
      * @return int|null $color The font color.
      */
     public function getFont()
@@ -207,9 +228,9 @@ class Color
 
     /**
      * Sets the font color.
-     * 
+     *
      * @param int|null $color The font color.
-     * 
+     *
      * @return $this
      */
     public function setFont($color)
@@ -228,7 +249,7 @@ class Color
 
     /**
      * Gets the background color.
-     * 
+     *
      * @return int|null $color The background color.
      */
     public function getBackground()
@@ -238,9 +259,9 @@ class Color
 
     /**
      * Sets the background color.
-     * 
+     *
      * @param int|null $color The background color.
-     * 
+     *
      * @return $this
      */
     public function setBackground($color)
@@ -259,7 +280,7 @@ class Color
 
     /**
      * Gets the flags.
-     * 
+     *
      * @return int The currently set flags.
      */
     public function getFlags()
@@ -269,14 +290,14 @@ class Color
 
     /**
      * Sets the flags.
-     * 
+     *
      * Sets the flags to apply in the sequence. Note that flags are applied
      * before all other settings, in ascending order of the constant values.
-     * 
+     *
      * @param int $flags The new flags to set. Unknown flags will be ignored
      *     when forming the sequence, but will be visible with
      *     {@link getFlags()} non the less.
-     * 
+     *
      * @return $this
      */
     public function setFlags($flags)
@@ -289,10 +310,10 @@ class Color
 
     /**
      * Gets styles.
-     * 
+     *
      * @param int|null $style A single style to get the status of,
      *     or {@link Styles::ALL} to get all styles in an array.
-     * 
+     *
      * @return bool|null|bool[] A single style status, or
      *     an array of status if $style is {@link Styles::ALL}.
      */
@@ -306,9 +327,9 @@ class Color
 
     /**
      * Sets styles.
-     * 
+     *
      * Sets styles matched to a specified state.
-     * 
+     *
      * @param int|null  $styles Bitmask of styles to set. You can also use the
      *     constant {@link Styles::ALL} (only) to set all known styles.
      *     Unknown styles will be ignored.
@@ -317,7 +338,7 @@ class Color
      *     FLASE to disable them,
      *     NULL to remove the setting for them (in effect using whatever the
      *     console had before the sequence was applied).
-     * 
+     *
      * @return $this
      */
     public function setStyles($styles, $state)
@@ -344,14 +365,14 @@ class Color
 
     /**
      * Get the console escaping sequence.
-     * 
+     *
      * This is a magic PHP method that will be called when you use the object in
      * a string context or otherwise explicitly cast it to a string.
-     * 
+     *
      * It generates the escape sequence and returns it.
      * For the sake of performance, the escape sequence is cached, and is only
      * regenerated when a setter has been previously called.
-     * 
+     *
      * @return string The string to write to console to get the specified
      *     styling.
      */

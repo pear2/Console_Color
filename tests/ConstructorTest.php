@@ -7,9 +7,9 @@ use PEAR2\Console\Color\Backgrounds;
 use PEAR2\Console\Color\Fonts;
 use PEAR2\Console\Color\Flags;
 use PEAR2\Console\Color\UnexpectedValueException;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class ConstructorTest extends PHPUnit_Framework_TestCase
+class ConstructorTest extends TestCase
 {
     public function invalidConstructorDataProvider()
     {
@@ -34,12 +34,13 @@ class ConstructorTest extends PHPUnit_Framework_TestCase
 
     /**
      * Tests constructor exceptions.
-     * 
+     *
      * @param int      $code
      * @param int|null $font
      * @param int|null $background
-     * 
+     *
      * @return void
+     *
      * @dataProvider invalidConstructorDataProvider
      */
     public function testInvalidConstructor($code, $font, $background)
@@ -285,13 +286,14 @@ class ConstructorTest extends PHPUnit_Framework_TestCase
 
     /**
      * Tests the constructor.
-     * 
+     *
      * @param string   $sequence
      * @param int|null $font
      * @param int|null $background
      * @param int      $flags
-     * 
+     *
      * @return void
+     *
      * @dataProvider constructorDataProvider
      */
     public function testConstructor($sequence, $font, $background, $flags)

@@ -1,10 +1,10 @@
 <?php
 
 /**
- * packagexmlsetup.php for PEAR2_Console_Color.
- * 
+ * File packagexmlsetup.php for PEAR2_Console_Color.
+ *
  * PHP version 5.3
- * 
+ *
  * @category Console
  * @package  PEAR2_Console_Color
  * @author   Vasil Rangelov <boen.robot@gmail.com>
@@ -20,20 +20,20 @@ use Pyrus\Developer\PackageFile\v2;
 
 /**
  * Configuration array.
- * 
+ *
  * Each key is the task.
- * 
+ *
  * The task "replace" uses an array where the key is the value to be searched
  * for, and the value is an array of additional attributes for the task, which
  * normally contain at least "type" (pear-config/package-info) and "to", which
  * specifies the value to replace it with.
- * 
+ *
  * The task "eol" uses an array where the key is a filename pattern to be
  * matched, and the value is the target platform's EOL to be used for those
  * file names (windows/unix).
- * 
+ *
  * Unrecognized tasks are ignored.
- * 
+ *
  * @var array
  */
 $config = array(

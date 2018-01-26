@@ -1,8 +1,8 @@
 <?php
 
 /**
- * bootstrap.php for PEAR2_Console_Color.
- * 
+ * File bootstrap.php for PEAR2_Console_Color.
+ *
  * PHP version 5.3
  *
  * @category Console
@@ -34,3 +34,7 @@ if (false !== $autoloader) {
     }
 }
 unset($autoloader);
+
+if (!class_exists('PHPUnit\Framework\TestCase', true)) {
+    require_once 'phpunit.polyfill.php';
+}

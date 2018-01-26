@@ -2,7 +2,7 @@
 
 /**
  * Exception class for PEAR2_Console_Color.
- * 
+ *
  * PHP version 5.3
  *
  * @category Console

@@ -1,15 +1,26 @@
 language: php
+matrix:
+  include:
+    # The earliest PHP 5.3 version that can run the test suit
+    # AND is supported by Travis-CI.
+    - php: 5.3.3
+      dist: precise
+      install:
+          - composer config -g -- disable-tls true
+          - composer config -g -- secure-http false
+    - php: 5.3
+      dist: precise
 php:
-  # The earliest PHP 5.3 version that can run the test suit
-  # AND is supported by Travis-CI.
-  - 5.3.3
-  - 5.3
   - 5.4
   - 5.5
+  - 5.6
+  - 7.0
+  - 7.1
+  - 7.2
 before_script:
-  - pyrus install PEAR2_Autoload-alpha
+  - composer install
   - cd tests
 script:
-  - phpunit --coverage-clover=coverage.clover --configuration phpunit.xml
+  - ../vendor/bin/phpunit --coverage-clover=c.clover --configuration phpunit.xml
   - wget https://scrutinizer-ci.com/ocular.phar
-  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+  - php ocular.phar code-coverage:upload --format=php-clover c.clover

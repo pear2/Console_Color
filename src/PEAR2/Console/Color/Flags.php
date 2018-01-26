@@ -3,7 +3,7 @@
 /**
  * Flags class for PEAR2_Console_Color
  * Mappping the names of Font Style to your values.
- * 
+ *
  * PHP version 5.3
  *
  * @category Console
@@ -19,7 +19,7 @@ use ReflectionClass;
 
 /**
  * This class has the possibles flags to a color setting.
- * 
+ *
  * @category Console
  * @package  PEAR2_Console_Color
  * @author   Vasil Rangelov <boen.robot@gmail.com>
@@ -51,8 +51,9 @@ abstract class Flags
     const INVERSE = 2;
 
     /**
-     * @var int[] Array with the flag as a key, and the corresponding code as a
-     *     value.
+     * Array with the flag as a key, and the corresponding code as a value.
+     *
+     * @var int[]
      */
     protected static $flagCodes = array(
         self::RESET   => 0,
@@ -61,9 +62,9 @@ abstract class Flags
 
     /**
      * Gets the codes for a flag set.
-     * 
+     *
      * @param int $flags The flags to get the codes for.
-     * 
+     *
      * @return int[] The codes for the flags specified, in ascending order,
      *     based on the flag constants' values.
      */

@@ -2,7 +2,7 @@
 
 /**
  * Stub for PEAR2_Console_Color.
- * 
+ *
  * PHP version 5.3
  *
  * @category Console
@@ -41,7 +41,7 @@ foreach (array('spl') as $ext) {
         $missing_extensions[] = $ext;
     }
 }
-if ($missing_extensions) {
+if (!empty($missing_extensions)) {
     echo "\nERROR: You must compile PHP with the following extensions enabled:\n",
         implode(', ', $missing_extensions), "\n",
         "or install the necessary extensions for your distribution.\n";
@@ -105,7 +105,7 @@ HEREDOC;
         echo <<<HEREDOC
 To add support for color escape sequences to Windows' command prompt,
 install ANSICON.
-See http://adoxa.hostmyway.net/ansicon/ or https://github.com/adoxa/ansicon.
+See https://github.com/adoxa/ansicon.
 
 HEREDOC;
         if (false !== getenv('ANSICON_VER')) {

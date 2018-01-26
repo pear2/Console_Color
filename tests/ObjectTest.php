@@ -6,9 +6,9 @@ use PEAR2\Console\Color;
 use PEAR2\Console\Color\Backgrounds;
 use PEAR2\Console\Color\Fonts;
 use PEAR2\Console\Color\Flags;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class ObjectTest extends PHPUnit_Framework_TestCase
+class ObjectTest extends TestCase
 {
     /**
      * @var Color
@@ -45,11 +45,12 @@ class ObjectTest extends PHPUnit_Framework_TestCase
 
     /**
      * Tests getting and setting of fonts.
-     * 
+     *
      * @param int    $font
      * @param string $sequence
-     * 
+     *
      * @return void
+     *
      * @dataProvider setGetFontDataProvider
      */
     public function testSetGetFont($font, $sequence)
@@ -84,11 +85,12 @@ class ObjectTest extends PHPUnit_Framework_TestCase
 
     /**
      * Tests setting and getting of backgrounds.
-     * 
+     *
      * @param int    $backgorund
      * @param string $sequence
-     * 
+     *
      * @return void
+     *
      * @dataProvider setGetBackgroundDataProvider
      */
     public function testSetGetBackground($backgorund, $sequence)
@@ -124,12 +126,13 @@ class ObjectTest extends PHPUnit_Framework_TestCase
 
     /**
      * Tests setting of flags.
-     * 
+     *
      * @param mixed  $flags
      * @param int    $expectedFlags
      * @param string $sequence
-     * 
+     *
      * @return void
+     *
      * @dataProvider setGetFlagsDataProvider
      */
     public function testSetGetFlags($flags, $expectedFlags, $sequence)
@@ -197,13 +200,14 @@ class ObjectTest extends PHPUnit_Framework_TestCase
 
     /**
      * Tests setting and getting of styles.
-     * 
+     *
      * @param mixed  $styles
      * @param mixed  $state
      * @param bool[] $states
      * @param string $sequence
-     * 
+     *
      * @return void
+     *
      * @dataProvider setGetStylesDataProvider
      */
     public function testSetGetStyles($styles, $state, $states, $sequence)
