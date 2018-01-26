@@ -95,14 +95,14 @@ class Color
      *
      * @var string
      */
-    private static $_flagsResolver = 'PEAR2\Console\Color\Flags';
+    private $_flagsResolver = 'PEAR2\Console\Color\Flags';
 
     /**
      * Name of a class that is used to resolve styles to codes.
      *
      * @var string
      */
-    private static $_stylesResolver = 'PEAR2\Console\Color\Styles';
+    private $_stylesResolver = 'PEAR2\Console\Color\Styles';
 
     /**
      * Sets the flag resolver class name.
@@ -114,15 +114,15 @@ class Color
      *
      * @return void
      */
-    final protected static function setFlagsResolver($flags)
+    final protected function setFlagsResolver($flags)
     {
-        if (self::$_flagsResolver !== $flags) {
-            if (is_subclass_of($flags, self::$_flagsResolver)) {
-                self::$_flagsResolver = $flags;
+        if ($this->_flagsResolver !== $flags) {
+            if (is_subclass_of($flags, $this->_flagsResolver)) {
+                $this->_flagsResolver = $flags;
             } else {
                 throw new DomainException(
-                    DomainException::CODE_FLAGS,
-                    'Invalid flags resolver supplied'
+                    'Invalid flags resolver supplied',
+                    DomainException::CODE_FLAGS
                 );
             }
         }
@@ -138,15 +138,15 @@ class Color
      *
      * @return void
      */
-    final protected static function setStylesResolver($styles)
+    final protected function setStylesResolver($styles)
     {
-        if (self::$_stylesResolver !== $styles) {
-            if (is_subclass_of($styles, self::$_stylesResolver)) {
-                self::$_stylesResolver = $styles;
+        if ($this->_stylesResolver !== $styles) {
+            if (is_subclass_of($styles, $this->_stylesResolver)) {
+                $this->_stylesResolver = $styles;
             } else {
                 throw new DomainException(
-                    DomainException::CODE_STYLES,
-                    'Invalid styles resolver supplied'
+                    'Invalid styles resolver supplied',
+                    DomainException::CODE_STYLES
                 );
             }
         }
@@ -209,8 +209,8 @@ class Color
             __CLASS__ . '\Fonts',
             __CLASS__ . '\Backgrounds'
         );
-        static::setFlagsResolver(__CLASS__ . '\Flags');
-        static::setStylesResolver(__CLASS__ . '\Styles');
+        $this->setFlagsResolver(__CLASS__ . '\Flags');
+        $this->setStylesResolver(__CLASS__ . '\Styles');
         $this->setFont($font);
         $this->setBackground($background);
         $this->setFlags($flags);
@@ -344,7 +344,7 @@ class Color
     public function setStyles($styles, $state)
     {
         $matchingStyles = call_user_func(
-            array(self::$_stylesResolver, 'match'),
+            array($this->_stylesResolver, 'match'),
             $styles
         );
         if (null === $state) {
@@ -382,14 +382,14 @@ class Color
             $seq = implode(
                 ';',
                 call_user_func(
-                    array(self::$_flagsResolver, 'getCodes'),
+                    array($this->_flagsResolver, 'getCodes'),
                     $this->flags
                 )
             ) . ";{$this->font};{$this->backgorund};";
 
             foreach ($this->styles as $style => $state) {
                 $seq .= call_user_func(
-                    array(self::$_stylesResolver, 'getCode'),
+                    array($this->_stylesResolver, 'getCode'),
                     $style,
                     $state
                 ) . ';';

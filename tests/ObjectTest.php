@@ -1,11 +1,12 @@
 <?php
 
-namespace PEAR2\Console\Color;
+namespace PEAR2\Console\Color\Test;
 
 use PEAR2\Console\Color;
 use PEAR2\Console\Color\Backgrounds;
 use PEAR2\Console\Color\Fonts;
 use PEAR2\Console\Color\Flags;
+use PEAR2\Console\Color\Styles;
 use PHPUnit\Framework\TestCase;
 
 class ObjectTest extends TestCase

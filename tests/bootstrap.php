@@ -22,7 +22,11 @@ chdir(__DIR__);
 
 $autoloader = stream_resolve_include_path('../vendor/autoload.php');
 if (false !== $autoloader) {
-    include_once $autoloader;
+    $composerAutoloader = include $autoloader;
+    $composerAutoloader->addPsr4(
+        'PEAR2\Console\Color\Test\Derivatives\\',
+        __DIR__ . DIRECTORY_SEPARATOR . 'Derivatives'
+    );
 } else {
     $autoloader = stream_resolve_include_path('PEAR2/Autoload.php');
     if (false !== $autoloader) {
@@ -36,5 +40,5 @@ if (false !== $autoloader) {
 unset($autoloader);
 
 if (!class_exists('PHPUnit\Framework\TestCase', true)) {
-    require_once 'phpunit.polyfill.php';
+    include_once 'phpunit.polyfill.php';
 }

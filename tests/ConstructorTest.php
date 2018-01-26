@@ -1,6 +1,6 @@
 <?php
 
-namespace PEAR2\Console\Color;
+namespace PEAR2\Console\Color\Test;
 
 use PEAR2\Console\Color;
 use PEAR2\Console\Color\Backgrounds;

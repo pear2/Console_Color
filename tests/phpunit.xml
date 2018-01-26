@@ -29,6 +29,7 @@
             <exclude>
               <!-- No executable code present. -->
               <file>../src/PEAR2/Console/Color/Backgrounds.php</file>
+              <file>../src/PEAR2/Console/Color/DomainException.php</file>
               <file>../src/PEAR2/Console/Color/Exception.php</file>
               <file>../src/PEAR2/Console/Color/Fonts.php</file>
               <file>../src/PEAR2/Console/Color/UnexpectedValueException.php</file>
