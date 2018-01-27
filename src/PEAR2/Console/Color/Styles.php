@@ -130,4 +130,20 @@ abstract class Styles
     {
         return static::$styleCodes[$style][(int)(bool)$state];
     }
+
+    /**
+     * Get the codes for multiple styles at once.
+     *
+     * @param bool[] $styles The styles to get codes for.
+     *
+     * @return int[] The style codes.
+     */
+    final public static function getCodes(array $styles)
+    {
+        $codes = array();
+        foreach ($styles as $style => $state) {
+            $codes[] = static::getCode($style, $state);
+        }
+        return $codes;
+    }
 }

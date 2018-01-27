@@ -379,25 +379,27 @@ class Color
     public function __toString()
     {
         if (null === $this->sequence) {
-            $seq = implode(
-                ';',
-                call_user_func(
-                    array($this->_flagsResolver, 'getCodes'),
-                    $this->flags
-                )
-            ) . ";{$this->font};{$this->backgorund};";
-
-            foreach ($this->styles as $style => $state) {
-                $seq .= call_user_func(
-                    array($this->_stylesResolver, 'getCode'),
-                    $style,
-                    $state
-                ) . ';';
-            }
-
-            $this->sequence = "\033["
-                . trim(preg_replace('/\;{2,}/', ';', $seq), ';')
-                . 'm';
+            $this->sequence = "\033[" . trim(
+                preg_replace(
+                    '/\;{2,}/',
+                    ';',
+                    implode(
+                        ';',
+                        call_user_func(
+                            array($this->_flagsResolver, 'getCodes'),
+                            $this->flags
+                        )
+                    ) . ";{$this->font};{$this->backgorund};" .
+                    implode(
+                        ';',
+                        call_user_func(
+                            array($this->_stylesResolver, 'getCodes'),
+                            $this->styles
+                        )
+                    )
+                ),
+                ';'
+            ) . 'm';
         }
 
         return $this->sequence;

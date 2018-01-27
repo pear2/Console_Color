@@ -19,6 +19,7 @@
     <testsuites>
         <testsuite name="All Tests">
             <file>ConstructorTest.php</file>
+            <file>ObjectCustomTest.php</file>
             <file>ObjectTest.php</file>
         </testsuite>
     </testsuites>
