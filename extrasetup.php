@@ -9,7 +9,7 @@
  * @package  PEAR2_Console_Color
  * @author   Vasil Rangelov <boen.robot@gmail.com>
  * @license  http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
- * @version  GIT: $Id$
+ * @version  GIT: $Format:%x24Commit:%H%x24$
  * @link     http://pear2.php.net/PEAR2_Console_Color
  */
 
